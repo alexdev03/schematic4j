@@ -74,6 +74,9 @@ public enum SchematicFormat {
 	}
 
 	private static void guessSpongeFormat(Candidates<SchematicFormat> candidates, @NonNull CompoundTag rootTag) {
+		if(rootTag.containsKey("Schematic")){
+			rootTag = rootTag.getCompoundTag("Schematic");
+		}
 		if (rootTag.containsKey(SpongeParser.NBT_VERSION)) {
 			final int version = rootTag.getInt(SpongeParser.NBT_VERSION);
 			switch (version) {
